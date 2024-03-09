@@ -1,10 +1,249 @@
+/* Styles généraux */
+
 body {
-    font-family: "Lilita One", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    letter-spacing: .025rem;
-    line-height: 1.5rem;
-    background-color: white;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 214, 237, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Styles du header */
+
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 10px 0;
+}
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.banner_utility_items {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.banner_utility_items li {
+    margin-right: 20px;
+}
+
+.banner_utility-items.-connexion i,
+.banner_utility-items.-panier i {
+    font-size: 24px;
+}
+
+.logo {
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+    margin: 0;
+}
+
+/* Styles du panier */
+
+main {
+    padding: 20px;
+}
+
+.paniertitre {
+    font-family: 'Protest Riot', cursive;
+    color: #333;
+}
+
+.panier {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.item {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.image {
+    flex: 0 0 100px;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+}
+
+.details {
+    flex: 1;
+    padding-left: 20px;
+}
+
+.details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.details p {
+    margin: 0;
+    color: #666;
+}
+
+.quantity-selector {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.infopaye {
+    margin-top: 20px;
+}
+
+.soustot p {
+    font-weight: bold;
+}
+
+button {
+    background-color: rgba(255, 214, 237, 1);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: rgba(255, 214, 237, 0.4)
+}
+
+/* Styles du footer */
+
+footer {
+    background-color: rgba(255, 214, 237, 1);
+    color: #fff;
+    padding: 20px 0;
+}
+
+.basdepage {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bdp {
+    margin-bottom: 20px;
+}
+
+.flexi {
+    text-align: center;
+}
+
+.flexi h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.flexi p {
+    margin: 5px 0;
+}
+
+.flexi a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.flexi a:hover {
+    text-decoration: underline;
+}
+
+.divimage {
+    margin-bottom: 20px;
+}
+
+.divimage img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.productinformations {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nameproduct {
+    font-family: 'Protest Riot', cursive;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.productinformations p {
+    margin: 0 0 10px;
+    color: #666;
+}
+
+#quantiteSelect {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+.argvente {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+.argvente-item {
+    display: none;
+    text-align: center;
+}
+.argvente-item h2 {
+    margin: 0;
+    font-size: 24px;
+}
+.argvente-item h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #555555;
+}
+.imagea {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.textvedette h1 {
+    margin: 20px 0;
+    font-size: 32px;
+    font-family: 'Lilita One', cursive;
+}
+.product {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
 }
 
 header {
@@ -100,11 +339,7 @@ header {
     flex-direction: column;
     margin: 1rem;
 }
-.argvente {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    margin-right: 2rem;
-}
+
 .imagea {
     border-radius: 20px;
     padding: 2rem;
@@ -171,7 +406,6 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: rgba(255, 214, 237, 0.4);
     list-style-type: none;
 }
 .flexi {
@@ -209,7 +443,6 @@ header {
     align-items: start;
 }
 .infopaye {
-    border: 2px solid black;
     background-color: rgba(255, 214, 237, 0.4);
     padding-left: 6rem;
     padding-right: 6rem;
@@ -282,15 +515,7 @@ header {
     border-radius: 20px;
     background-color: white
   }
-.item {
-    display: flex;
-    align-items: center;
-    width: 35%;
-    border: 3px solid #ffd6ed;
-    border-radius: 20px;
-    margin-left: 10rem;
-    margin-top: 1rem;
-}
+
 .item img {
     object-fit: contain;
     width: 100%;
@@ -303,8 +528,22 @@ header {
 }
 .details {
     padding: 3%;
+    margin-right: 3rem;
+}
+/* Style pour le bouton de sélection de quantité */
+.quantity-selector {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    cursor: pointer;
 }
 
+/* Style pour le survol du bouton de sélection de quantité */
+.quantity-selector:hover {
+    background-color: rgba(255, 214, 237, 0.4);
+}
 
 
 

@@ -101,31 +101,34 @@
                     // Récupérer les détails du produit à partir de la réponse de l'API
                     var product = data.item;
 
-                    // Calculer le montant total pour cet article
-                    var totalForItem = product.price * item.quantity;
+                    // Vérifier si la quantité est supérieure à 0
+                    if (item.quantity > 0) {
+                        // Calculer le montant total pour cet article
+                        var totalForItem = product.price * item.quantity;
 
-                    // Ajouter le montant total au sous-total
-                    subTotal += totalForItem;
+                        // Ajouter le montant total au sous-total
+                        subTotal += totalForItem;
 
-                    // Afficher les détails de l'article avec le bouton de sélection de quantité
-                    cartDetailsDiv.innerHTML += `
-                        <div class="item">
-                            <div class="image">
-                                <img src="https://api.kedufront.juniortaker.com/item/picture/${product.image}" alt="${product.name}">
-                            </div>
-                            <div class="details">
-                                <h3>${product.name}</h3>
-                                <p>Prix unitaire: ${product.price} €</p>
-                                <div>
-                                    <label for="quantity-${item.productId}">Quantité:</label>
-                                    <select id="quantity-${item.productId}" class="quantity-selector" data-product-id="${item.productId}">
-                                        ${generateQuantityOptions(item.quantity, item.quantity)}
-                                    </select>
+                        // Afficher les détails de l'article avec le bouton de sélection de quantité
+                        cartDetailsDiv.innerHTML += `
+                            <div class="item">
+                                <div class="image">
+                                    <img src="https://api.kedufront.juniortaker.com/item/picture/${product.image}" alt="${product.name}">
                                 </div>
-                                <p>Total: ${totalForItem} €</p>
+                                <div class="details">
+                                    <h3>${product.name}</h3>
+                                    <p>Prix unitaire: ${product.price} €</p>
+                                    <div>
+                                        <label for="quantity-${item.productId}">Quantité:</label>
+                                        <select id="quantity-${item.productId}" class="quantity-selector" data-product-id="${item.productId}">
+                                            ${generateQuantityOptions(item.quantity, item.quantity)}
+                                        </select>
+                                    </div>
+                                    <p>Total: ${totalForItem} €</p>
+                                </div>
                             </div>
-                        </div>
-                    `;
+                        `;
+                    }
 
                     // Mettre à jour le sous-total affiché
                     document.getElementById('subTotal').textContent = `Sous-total : ${subTotal} €`;
@@ -143,22 +146,22 @@
 
     // Fonction pour générer les options de quantité dans le sélecteur
     function generateQuantityOptions(selectedQuantity, storedQuantity) {
-    var options = '';
-    for (var i = 0; i <= 10; i++) {
-        if (i === selectedQuantity) {
-            options += `<option value="${i}" selected>${i}</option>`;
-        } else {
-            options += `<option value="${i}">${i}</option>`;
+        var options = '';
+        for (var i = 0; i <= 10; i++) {
+            if (i === selectedQuantity) {
+                options += `<option value="${i}" selected>${i}</option>`;
+            } else {
+                options += `<option value="${i}">${i}</option>`;
+            }
         }
+        // Ajouter la quantité stockée dans le local storage
+        if (storedQuantity > 0 && storedQuantity <= 10) {
+            options += `<option value="${storedQuantity}" selected>${storedQuantity}</option>`;
+        } else if (storedQuantity > 10) {
+            options += `<option value="${storedQuantity}" selected>${storedQuantity}</option>`;
+        }
+        return options;
     }
-    // Ajouter la quantité stockée dans le local storage
-    if (storedQuantity > 0 && storedQuantity <= 10) {
-        options += `<option value="${storedQuantity}" selected>${storedQuantity}</option>`;
-    } else if (storedQuantity > 10) {
-        options += `<option value="${storedQuantity}" selected>${storedQuantity}</option>`;
-    }
-    return options;
-}
 
     // Fonction pour mettre à jour le prix total lorsque la quantité est modifiée
     function updateTotal() {
