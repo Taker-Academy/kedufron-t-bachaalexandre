@@ -8,8 +8,8 @@ body {
 }
 
 header {
-    background-color: beige;
-    border: 2px solid black;
+    background-color:#ffd6ed;
+    border: 2px solid rgba(255, 214, 237, 0.4);
     border-radius: 20px;
     width: 100%;
 }
@@ -93,35 +93,32 @@ header {
 }
 .infos {
     padding: 4rem;
-    border: 2px solid black;
+    background-color: #ffd6ed;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 100px;
-    background-color: beige;
     margin: 1rem;
 }
 .argvente {
     margin-top: 2rem;
-    background-color: beige;
-    border-radius: 100px;
-    border: 2px solid black;
     margin-bottom: 2rem;
+    margin-right: 2rem;
 }
 .imagea {
     border-radius: 20px;
-    background-color: beige;
     padding: 2rem;
     display: flex;
-    border: 2px solid black;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
 }
 .imagea img {
     border-radius: 20px;
 }
+
 .product {
-    border: 2px solid black; /* Définition de la bordure */
+    /* border: 2px solid black; Définition de la bordure */
     padding: 10px; /* Ajout de marge intérieure pour l'espace autour du contenu */
     margin-bottom: 20px; /* Ajout de marge en bas pour l'espacement entre les produits */
     border-radius: 20px;
@@ -130,35 +127,51 @@ header {
     align-items: center;
     margin: 2rem;
 }
+
+#products-container img:hover {
+    transform: scale(1.2);
+}
+
 #products-container {
     display: flex; /* Utilisation de flexbox pour disposer les produits en ligne */
     flex-wrap: wrap; /* Affichage des produits en colonne */
     justify-content: center;
+    align-items:first baseline
 }
 
 #product-details {
-    background-color: beige;
+    /* background-color: beige; */
     display: flex;
     align-items: center;
-    border: 2px solid black;
+    border: 5px solid rgba(255, 214, 237, 1);
     border-radius: 20px;
     margin-top: 2rem;
-    height: 30rem;
+    width: 100%;
+    height: 100%;
+    
+}
+.divimage {
+    width: 40%;
+    height: 100%;
+    margin-right: 3rem;
+}
+#product-details img {
+    width: 100%;
+    height: 100%;
 }
 .productinformations {
     display: flex;
     flex-direction: column;
+    background-color: #ffd6ed;
+    border-radius: 20px;
+    padding: 3%;
 }
-#product-details img {
-    width: 50rem;
-    height: 20rem;
-    margin: 2rem;
-}
+
 .basdepage {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    background-color: beige;
+    background-color: rgba(255, 214, 237, 0.4);
     list-style-type: none;
 }
 .flexi {
@@ -197,19 +210,100 @@ header {
 }
 .infopaye {
     border: 2px solid black;
-    background-color: beige;
+    background-color: rgba(255, 214, 237, 0.4);
     padding-left: 6rem;
     padding-right: 6rem;
     border-radius: 20px;
-    margin-left: 2rem;
     padding-bottom: 2rem;
+    margin-right: 5rem;
+    margin-top: 1rem;
 }
 .paniertitre {
     text-align: center;
 }
+#first-products-container {
+    display: flex; /* Utilisation de flexbox pour disposer les produits en ligne *//* Affichage des produits en colonne */
+    justify-content: space-around;
+    align-items:first baseline;
+    width: 100%;
+    border: 2px solid rgba(255, 214, 237, 0.4);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 100%;
+}
+.product img{
+    width: 90%;
+    margin-bottom: 2rem;
+}
 
+#next-products-container {
+    border: 2px solid rgba(255, 214, 237, 0.4);
+    display: flex; /* Utilisation de flexbox pour disposer les produits en ligne *//* Affichage des produits en colonne */
+    justify-content: space-around;
+    align-items:first baseline;
+    width: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    height: 100%;
+}
 
-
+#first-products-container img:hover {
+    transform: scale(1.1);
+}
+#next-products-container img:hover {
+    transform: scale(1.1);
+}
+.textvedette {
+    margin-top: 4rem;
+    display: flex;
+    justify-content: center;
+    background-color: #ffd6ed;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.argvente-item {
+    display: flex;
+    align-items: center;
+}
+.defile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.argvente {
+    border-radius: 20px;
+    width: 100%;
+}
+#quantiteSelect {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: white
+  }
+.item {
+    display: flex;
+    align-items: center;
+    width: 35%;
+    border: 3px solid #ffd6ed;
+    border-radius: 20px;
+    margin-left: 10rem;
+    margin-top: 1rem;
+}
+.item img {
+    object-fit: contain;
+    width: 100%;
+    border-radius: 20px;
+}
+.image {
+    width: 50%;
+    height: 100%;
+    margin-right: 2rem;
+}
+.details {
+    padding: 3%;
+}
 
 
 

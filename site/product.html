@@ -34,19 +34,6 @@
         <div id="product-details">
             <!-- Les détails du produit seront insérés ici via JavaScript -->
         </div>
-        <select id="quantiteSelect">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
     </main>
     <footer>
         <ul class="basdepage">
@@ -74,11 +61,14 @@
             </li>
         </ul>
     </footer>
-
     <script>
+                // Récupérer l'ID du produit depuis le localStorage
         var selectedProductId = localStorage.getItem('selectedProductId');
-    
-        // Fetch des détails du produit et affichage
+
+        // Récupérer la quantité sélectionnée depuis le stockage local
+        var selectedQuantity = localStorage.getItem('selectedQuantity') || 0;
+
+        // Faire une requête à l'API pour obtenir les détails du produit en fonction de son ID
         fetch(`https://api.kedufront.juniortaker.com/item/${selectedProductId}`)
             .then(response => {
                 if (!response.ok) {
@@ -87,51 +77,59 @@
                 return response.json();
             })
             .then(data => {
+                // Récupérer les détails du produit à partir de la réponse de l'API
                 var product = data.item;
+
+                // Afficher les détails du produit
                 var productDetailsDiv = document.getElementById('product-details');
                 productDetailsDiv.innerHTML = `
+                <div class="divimage">
                     <img src="https://api.kedufront.juniortaker.com/item/picture/${product.image}" alt="${product.name}">
-                    <div class="productinformations">
-                        <h2 class="nameproduct">${product.name}</h2>
-                        <p>Description: ${product.description}</p>
-                        <p>Prix: ${product.price} €</p>
-                    </div>
+                </div>
+                <div class="productinformations">
+                    <h2 class="nameproduct">${product.name}</h2>
+                    <p>Description: ${product.description}</p>
+                    <p>Prix: ${product.price} €</p>
+                    <select id="quantiteSelect">
+                        ${generateQuantityOptions()}
+                    </select>
+                </div>
                 `;
-    
-                // Vérifier si une quantité est déjà stockée pour ce produit
-                var storedQuantity = localStorage.getItem(selectedProductId);
-                if (storedQuantity !== null) {
-                    quantiteSelect.value = storedQuantity; // Pré-sélectionner la quantité dans le sélecteur
-                }
+
+                // Sélectionner la quantité par défaut dans le menu déroulant
+                document.getElementById('quantiteSelect').value = selectedQuantity;
+
+                // Ajouter un écouteur d'événements pour enregistrer la quantité sélectionnée
+                document.getElementById('quantiteSelect').addEventListener('change', function() {
+                    // Récupérer la quantité sélectionnée
+                    var selectedQuantity = this.value;
+
+                    // Enregistrer la quantité sélectionnée dans le stockage local
+                    localStorage.setItem('selectedQuantity', selectedQuantity);
+
+                    // Mettre à jour la quantité dans le panier stockée dans le local storage
+                    var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                    var existingItemIndex = cartItems.findIndex(item => item.productId === selectedProductId);
+                    if (existingItemIndex !== -1) {
+                        cartItems[existingItemIndex].quantity = selectedQuantity;
+                    } else {
+                        // Si le produit n'est pas encore dans le panier, ajouter une nouvelle entrée
+                        cartItems.push({ productId: selectedProductId, quantity: selectedQuantity });
+                    }
+                    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                });
             })
             .catch(error => {
                 console.error('Erreur:', error);
             });
-    
-        // Ajout de l'événement change sur le select pour mettre à jour automatiquement le panier et le stockage local
-        var quantiteSelect = document.getElementById('quantiteSelect');
-        quantiteSelect.addEventListener('change', function() {
-            var quantiteSelectionnee = quantiteSelect.value;
-            updateQuantityInCart(selectedProductId, quantiteSelectionnee);
-            localStorage.setItem(selectedProductId, quantiteSelectionnee); // Stocker la quantité sélectionnée dans le stockage local
-        });
-    
-        // Fonction pour mettre à jour la quantité d'un article dans le panier
-        function updateQuantityInCart(productId, newQuantity) {
-            var found = false;
-            var panier = JSON.parse(localStorage.getItem('panier')) || [];
-            panier.forEach(function(article) {
-                if (article.productId === productId) {
-                    article.quantity = parseInt(newQuantity);
-                    found = true;
-                }
-            });
-            if (!found) {
-                panier.push({ productId: productId, quantity: parseInt(newQuantity) });
+        // Fonction pour générer les options de quantité dans le sélecteur
+        function generateQuantityOptions() {
+            var options = '';
+            for (var i = 0; i <= 10; i++) {
+                options += `<option value="${i}">${i}</option>`;
             }
-            localStorage.setItem('panier', JSON.stringify(panier));
+            return options;
         }
     </script>
-    
 </body>
 </html>
