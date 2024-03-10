@@ -15,7 +15,7 @@
                     <i class="fa-solid fa-bars" style="color: #000000;"></i>
                 </li>
                 <li class="banner_utility-items -logo">
-                    <h1 class="logo">KEDUTOYS</h1>
+                    <a href="./index.html"><h1 class="logo">KEDUTOYS</h1></a>
                 </li>
                 <li class="banner_utility-items -navbar">
                     <input type="text" placeholder="Recherche..." name="search">
@@ -34,15 +34,14 @@
         <h2 class="paniertitre">Votre Panier :</h2>
         <div class="panier">
             <div id="cart-details">
-                <!-- Les articles du panier seront affichés ici -->
+                <!-- Les articles du panier sont ici -->
             </div>
             <div class="infopaye">
                 <h2>Total</h2>
                 <div class="soustot">
                     <p id="subTotal">Sous-total : 0 €</p>
                 </div>
-                <button id="proceedToCheckoutButton">Procéder au paiement</button>
-                <button id="clearCartButton">Effacer le panier</button> <!-- Bouton pour effacer le panier -->
+                <a href="./formulaire.html"><button id="proceedToCheckoutButton">Procéder au paiement</button></a>
             </div>
         </div>
     </main>
@@ -74,22 +73,18 @@
     </footer>
 </body>
 <script>
-    // Récupérer les éléments du panier depuis le localStorage
+    //éléments du panier depuis le localStorage
     var cartItems = JSON.parse(localStorage.getItem('cartItems'));
-
-    // Sélectionner l'élément où les détails du panier seront affichés
+    //l'élément où les détails du panier seront affichés
     var cartDetailsDiv = document.getElementById('cart-details');
-
-    // Vérifier si le panier est vide
+    // si le panier est vide
     if (!cartItems || cartItems.length === 0) {
         cartDetailsDiv.innerHTML = '<p>Le panier est vide</p>';
     } else {
-        // Calculer le sous-total
+        //sous-total Pour chaque article dans le panier
         var subTotal = 0;
-
-        // Pour chaque article dans le panier
         cartItems.forEach(function(item) {
-            // Faire une requête à l'API pour obtenir les détails du produit en fonction de son ID
+            //requête à l'API pour obtenir les détails du produit en fonction de son ID
             fetch(`https://api.kedufront.juniortaker.com/item/${item.productId}`)
                 .then(response => {
                     if (!response.ok) {
@@ -98,17 +93,14 @@
                     return response.json();
                 })
                 .then(data => {
-                    // Récupérer les détails du produit à partir de la réponse de l'API
+                    //les détails du produit à partir de la réponse de l'API
                     var product = data.item;
-
                     // Vérifier si la quantité est supérieure à 0
                     if (item.quantity > 0) {
                         // Calculer le montant total pour cet article
                         var totalForItem = product.price * item.quantity;
-
                         // Ajouter le montant total au sous-total
                         subTotal += totalForItem;
-
                         // Afficher les détails de l'article avec le bouton de sélection de quantité
                         cartDetailsDiv.innerHTML += `
                             <div class="item">
@@ -129,10 +121,7 @@
                             </div>
                         `;
                     }
-
-                    // Mettre à jour le sous-total affiché
                     document.getElementById('subTotal').textContent = `Sous-total : ${subTotal} €`;
-
                     // Mettre à jour le prix total lorsque la quantité est modifiée
                     document.querySelectorAll('.quantity-selector').forEach(selector => {
                         selector.addEventListener('change', updateTotal);
@@ -143,8 +132,7 @@
                 });
         });
     }
-
-    // Fonction pour générer les options de quantité dans le sélecteur
+    //générer les options de quantité dans le sélecteur
     function generateQuantityOptions(selectedQuantity, storedQuantity) {
         var options = '';
         for (var i = 0; i <= 10; i++) {
@@ -162,8 +150,7 @@
         }
         return options;
     }
-
-    // Fonction pour mettre à jour le prix total lorsque la quantité est modifiée
+    //mettre à jour le prix total lorsque la quantité est modifiée
     function updateTotal() {
         var subTotal = 0;
         document.querySelectorAll('.item').forEach(item => {

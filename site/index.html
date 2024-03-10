@@ -15,8 +15,7 @@
                     <i class="fa-solid fa-bars" style="color: #000000;"></i>
                 </li>
                 <li class="banner_utility-items -logo">
-                    <h1 class="logo">KEDUTOYS</h1>
-                </li>
+                    <a href="./index.html"><h1 class="logo">KEDUTOYS</h1></a>
                 <li class="banner_utility-items -navbar">
                     <input type="text" placeholder="Recherche..." name="search">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass" style="color: black;"></i></button>
@@ -33,19 +32,19 @@
     <main>
         <div class="argvente">
             <ul class="instanteview">
-                <li class="infos argvente-item"> <!-- Ajout de la classe 'argvente-item' -->
+                <li class="infos argvente-item">
                     <div class="defile">
                         <h2>SATISFAIT OU REMBOURSÉ</h2>
                         <h3>Pendant 15 jours</h3>
                     </div>
                 </li>
-                <li class="infos argvente-item"> <!-- Ajout de la classe 'argvente-item' -->
+                <li class="infos argvente-item">
                     <div class="defile">
                         <h2>LIVRAISON GRATUITE</h2>
                         <h3>Dès 50€ d'achats</h3>
                     </div>
                 </li>
-                <li class="infos argvente-item"> <!-- Ajout de la classe 'argvente-item' -->
+                <li class="infos argvente-item">
                     <div class="defile">
                         <h2>SERVICE CLIENTS</h2>
                         <h3>Contactez-nous 6/7j</h3>
@@ -72,7 +71,6 @@
             argventItems[currentItemIndex].style.display = 'block'; // Afficher l'élément actuel
             currentItemIndex = (currentItemIndex + 1) % argventItems.length; // Passer à l'élément suivant
         }
-
         // Début du défilement automatique
         setInterval(scrollArgventItems, 3000); 
             const apiUrl = 'https://api.kedufront.juniortaker.com/item/';

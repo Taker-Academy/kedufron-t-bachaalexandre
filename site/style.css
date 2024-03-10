@@ -13,8 +13,17 @@ body {
     padding: 20px;
 }
 
-/* Styles du header */
+.banner_utility-items.-navbar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
 
+.banner_utility-items input[type="text"],
+.banner_utility-items button {
+    margin-top: 1%;
+    margin-right: 10px;
+}
 header {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -49,8 +58,14 @@ header {
     font-size: 24px;
     margin: 0;
 }
+a {
+    text-decoration: none;
+    color:#333;
+}
 
-/* Styles du panier */
+a:hover {
+    color: #555;
+}
 
 main {
     padding: 20px;
@@ -127,8 +142,6 @@ button {
 button:hover {
     background-color: rgba(255, 214, 237, 0.4)
 }
-
-/* Styles du footer */
 
 footer {
     background-color: rgba(255, 214, 237, 1);
@@ -263,7 +276,7 @@ header {
     width: 100%;
 }
 .banner_utility-items i {
-    font-size: 20px; /* Augmente la taille des icônes à 24 pixels */
+    font-size: 20px;
 }
 
 .banner_utility-item {
@@ -303,21 +316,21 @@ header {
 }
 .banner_utility-items.-navbar input[type="text"] {
     flex: 1;
-    padding: 10px; /* Ajoute un espace intérieur autour du champ de recherche */
-    border: 2px solid black; /* Ajoute une bordure grise */
-    border-radius: 100px; /* Ajoute un coin arrondi */
-    font-size: 16px; /* Taille de la police */
-    width: 200px; /* Largeur de la barre de recherche */
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 100px;
+    font-size: 16px;
+    width: 200px; 
 }
 
 .banner_utility-items.-navbar button[type="submit"] {
-    background-color: white; /* Couleur de fond du bouton */
-    padding: 10px 20px; /* Ajoute un espace intérieur au bouton */
-    border-radius: 100px; /* Ajoute un coin arrondi */
-    cursor: pointer; /* Curseur de la souris lorsqu'il survole le bouton */
-    font-size: 16px; /* Taille de la police */
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    font-size: 16px;
     border: 2px solid black; 
-    margin-left: 10px; /* Ajoute un espace entre le champ de recherche et le bouton */
+    margin-left: 10px;
 }
 .imagea img {
     width: 10rem;
@@ -353,9 +366,9 @@ header {
 }
 
 .product {
-    /* border: 2px solid black; Définition de la bordure */
-    padding: 10px; /* Ajout de marge intérieure pour l'espace autour du contenu */
-    margin-bottom: 20px; /* Ajout de marge en bas pour l'espacement entre les produits */
+    border: 2px;
+    padding: 10px;
+    margin-bottom: 20px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -368,14 +381,13 @@ header {
 }
 
 #products-container {
-    display: flex; /* Utilisation de flexbox pour disposer les produits en ligne */
-    flex-wrap: wrap; /* Affichage des produits en colonne */
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items:first baseline
 }
 
 #product-details {
-    /* background-color: beige; */
     display: flex;
     align-items: center;
     border: 5px solid rgba(255, 214, 237, 1);
@@ -423,7 +435,6 @@ header {
 .cart-item {
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     margin-bottom: 1rem;
 }
 .productspanier {
@@ -455,7 +466,7 @@ header {
     text-align: center;
 }
 #first-products-container {
-    display: flex; /* Utilisation de flexbox pour disposer les produits en ligne *//* Affichage des produits en colonne */
+    display: flex;
     justify-content: space-around;
     align-items:first baseline;
     width: 100%;
@@ -471,7 +482,7 @@ header {
 
 #next-products-container {
     border: 2px solid rgba(255, 214, 237, 0.4);
-    display: flex; /* Utilisation de flexbox pour disposer les produits en ligne *//* Affichage des produits en colonne */
+    display: flex;
     justify-content: space-around;
     align-items:first baseline;
     width: 100%;
@@ -530,7 +541,6 @@ header {
     padding: 3%;
     margin-right: 3rem;
 }
-/* Style pour le bouton de sélection de quantité */
 .quantity-selector {
     padding: 8px;
     border: 1px solid #ccc;
@@ -540,22 +550,9 @@ header {
     cursor: pointer;
 }
 
-/* Style pour le survol du bouton de sélection de quantité */
 .quantity-selector:hover {
     background-color: rgba(255, 214, 237, 0.4);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 @media screen and (max-width: 768px) {
     body {
@@ -563,7 +560,6 @@ header {
     }
 }
 
-/* Réorganiser les éléments de la bannière pour les écrans plus petits */
 @media screen and (max-width: 600px) {
     .banner_utility_items {
         flex-direction: column;
@@ -582,15 +578,12 @@ header {
         width: 100%;
     }
 }
-
-/* Adapter la taille de l'image des produits pour les petits écrans */
 @media screen and (max-width: 768px) {
     img {
         width: 8rem;
     }
 }
 
-/* Ajuster la disposition des éléments de la liste .instanteview pour les petits écrans */
 @media screen and (max-width: 768px) {
     .instanteview {
         flex-direction: column;

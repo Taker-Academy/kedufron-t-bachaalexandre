@@ -15,7 +15,7 @@
                     <i class="fa-solid fa-bars" style="color: #000000;"></i>
                 </li>
                 <li class="banner_utility-items -logo">
-                    <h1 class="logo">KEDUTOYS</h1>
+                    <a href="./index.html"><h1 class="logo">KEDUTOYS</h1></a>
                 </li>
                 <li class="banner_utility-items -navbar">
                     <input type="text" placeholder="Recherche..." name="search">
@@ -95,18 +95,14 @@
                     </select>
                 </div>
                 `;
-
-                // Sélectionner la quantité par défaut dans le menu déroulant
+                // la quantité par défaut dans le menu déroulant
                 document.getElementById('quantiteSelect').value = selectedQuantity;
-
                 // Ajouter un écouteur d'événements pour enregistrer la quantité sélectionnée
                 document.getElementById('quantiteSelect').addEventListener('change', function() {
                     // Récupérer la quantité sélectionnée
                     var selectedQuantity = this.value;
-
                     // Enregistrer la quantité sélectionnée dans le stockage local
                     localStorage.setItem('selectedQuantity', selectedQuantity);
-
                     // Mettre à jour la quantité dans le panier stockée dans le local storage
                     var cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
                     var existingItemIndex = cartItems.findIndex(item => item.productId === selectedProductId);
